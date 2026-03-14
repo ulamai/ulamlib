@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: UlamLib track overview
+    url: https://github.com/ulamai/ulamlib/blob/main/TRACKS.md
+    about: Read the track decomposition and milestone structure before opening a new issue.

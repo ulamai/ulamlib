@@ -17,12 +17,20 @@
 
 This note targets an incidence layer over existing projectivization objects.
 The intended Lean destination is
-\texttt{ULAM/Geometry/ProjectiveIncidence.lean}.
+\texttt{UlamLib/Geometry/ProjectiveIncidence.lean}.
 
 \paragraph{Target Lean declarations.}
 This note should eventually feed declarations with names close to
 \texttt{Collinear}, \texttt{lineThrough}, \texttt{lineThrough\_unique}, and
 \texttt{ProjectiveMap.preservesCollinear}.
+
+\paragraph{Target Lean file family.}
+The track is intentionally split across
+\texttt{UlamLib/Geometry/ProjectiveIncidence/Defs.lean},
+\texttt{UlamLib/Geometry/ProjectiveIncidence/ProjectiveSubspaces.lean},
+\texttt{UlamLib/Geometry/ProjectiveIncidence/Lines.lean},
+\texttt{UlamLib/Geometry/ProjectiveIncidence/Axioms.lean}, and
+\texttt{UlamLib/Geometry/ProjectiveIncidence/Maps.lean}.
 
 \section{Ambient assumptions}
 
@@ -39,6 +47,8 @@ Projective space means the projectivization of $V$.
 \item \texttt{lineThrough\_unique}: uniqueness of the line through two distinct
 points.
 \item \texttt{ProjectiveMap.preservesCollinear}: incidence-preservation API.
+\item \texttt{ProjectiveSubspace}: bundled projective subspaces and their basic
+incidence lemmas.
 \end{enumerate}
 
 \section{Core definitions}
@@ -89,6 +99,7 @@ incidence axioms of projective geometry.
 \item Prove uniqueness of the line through two distinct points.
 \item Derive a projective-geometry axiom package.
 \item Package incidence-preserving maps.
+\item Add projective subspaces as a first-class layer.
 \end{enumerate}
 
 \end{document}

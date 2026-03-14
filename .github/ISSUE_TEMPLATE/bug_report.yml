@@ -1,0 +1,30 @@
+name: Bug report
+description: Report a problem in repository structure, notes, or Lean scaffolds.
+title: "[Bug] "
+labels:
+  - bug
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: What is broken?
+      description: Describe the problem precisely.
+    validations:
+      required: true
+  - type: input
+    id: path
+    attributes:
+      label: Relevant path
+      description: File or directory path, if applicable.
+      placeholder: UlamLib/LinearAlgebra/RowOp.lean
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect instead?
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Extra context
+      description: Links to notes, PRs, or issues that help explain the problem.

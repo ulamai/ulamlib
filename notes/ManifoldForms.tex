@@ -17,12 +17,20 @@
 
 This note is a bridge target between existing differential-form infrastructure
 on normed spaces and a bundled manifold-level API. The intended Lean
-destination is \texttt{ULAM/Geometry/ManifoldForms.lean}.
+destination is \texttt{UlamLib/Geometry/ManifoldForms.lean}.
 
 \paragraph{Target Lean declarations.}
 This note should eventually feed declarations with names close to
 \texttt{SmoothZeroForm}, \texttt{SmoothOneForm}, \texttt{pullback},
 \texttt{exteriorDerivative}, and \texttt{deRhamComplex}.
+
+\paragraph{Target Lean file family.}
+The track is intentionally split across
+\texttt{UlamLib/Geometry/ManifoldForms/Defs.lean},
+\texttt{UlamLib/Geometry/ManifoldForms/Wedge.lean},
+\texttt{UlamLib/Geometry/ManifoldForms/Pullback.lean},
+\texttt{UlamLib/Geometry/ManifoldForms/ExteriorDerivative.lean}, and
+\texttt{UlamLib/Geometry/ManifoldForms/DeRhamComplex.lean}.
 
 \section{Ambient assumptions}
 
@@ -90,7 +98,8 @@ exterior derivative.
 
 \begin{enumerate}
 \item Define bundled smooth $0$- and $1$-forms on manifolds.
-\item Extend to bundled smooth $n$-forms and the wedge product.
+\item Extend to bundled smooth $n$-forms.
+\item Add the wedge product.
 \item Add pullback under smooth maps and prove functoriality.
 \item Define the exterior derivative on bundled manifold forms.
 \item Prove pullback and exterior-derivative compatibility.

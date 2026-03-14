@@ -17,12 +17,19 @@
 
 This note is a seed target for a student-facing linear algebra layer over a
 field. The intended Lean destination is
-\texttt{ULAM/LinearAlgebra/RowReduction.lean}.
+\texttt{UlamLib/LinearAlgebra/RowReduction.lean}.
 
 \paragraph{Target Lean declarations.}
 This note should eventually feed declarations with names close to
 \texttt{RowOp}, \texttt{IsRowEchelon}, \texttt{IsReducedRowEchelon},
 \texttt{gaussianElimination}, and \texttt{rank\_eq\_pivotCount}.
+
+\paragraph{Target Lean file family.}
+The track is intentionally split across
+\texttt{UlamLib/LinearAlgebra/RowOp.lean},
+\texttt{UlamLib/LinearAlgebra/Echelon.lean},
+\texttt{UlamLib/LinearAlgebra/GaussianElimination.lean}, and
+\texttt{UlamLib/LinearAlgebra/RREF.lean}.
 
 \section{Ambient assumptions}
 

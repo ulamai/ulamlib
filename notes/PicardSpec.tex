@@ -17,12 +17,22 @@
 
 This note is the flagship advanced algebraic-geometry target in UlamLib. The
 intended Lean destination is
-\texttt{ULAM/AlgebraicGeometry/PicardSpec.lean}.
+\texttt{UlamLib/AlgebraicGeometry/PicardSpec.lean}.
 
 \paragraph{Target Lean declarations.}
 This note should eventually feed declarations with names close to
-\texttt{IsInvertibleModule}, \texttt{toInvertibleSheaf},
-\texttt{picardSpecEquiv}, and \texttt{picardToH1}.
+\texttt{Module.Invertible}, \texttt{toInvertibleSheaf}, and
+\texttt{picardSpecEquiv}.
+
+\paragraph{Target Lean file family.}
+The track is intentionally split across
+\texttt{UlamLib/AlgebraicGeometry/PicardSpec/Defs.lean},
+\texttt{UlamLib/AlgebraicGeometry/PicardSpec/LocalCriterion.lean}, and
+\texttt{UlamLib/AlgebraicGeometry/PicardSpec/Sheafification.lean}.
+
+\paragraph{Follow-on note.}
+The cohomological formulation is intentionally moved out of this file and into
+\texttt{notes/PicardCohomology.tex}.
 
 \section{Ambient assumptions}
 
@@ -32,7 +42,7 @@ $\mathrm{Spec}(R)$ with the standard structure sheaf.
 \section{Declaration blueprint}
 
 \begin{enumerate}
-\item \texttt{IsInvertibleModule}: predicate for invertible modules.
+\item \texttt{Module.Invertible}: existing naming anchor in mathlib.
 \item \texttt{isLocallyFreeRankOne}: local rank-one condition.
 \item \texttt{toInvertibleSheaf}: module-to-sheaf construction.
 \item \texttt{tensorToSheaf}: compatibility of tensor product with the sheaf
@@ -86,7 +96,6 @@ invertible sheaves on $\mathrm{Spec}(R)$.
 \item Construct the sheaf attached to an invertible module.
 \item Extend the bridge to locally free modules of constant rank.
 \item Identify $\mathrm{Pic}(R)$ with invertible sheaves on $\mathrm{Spec}(R)$.
-\item Add the cohomological formulation when the library support is ready.
 \end{enumerate}
 
 \end{document}

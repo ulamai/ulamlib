@@ -17,18 +17,26 @@
 
 This note targets a clean global ODE layer on top of local integral-curve
 machinery. The intended Lean destination is
-\texttt{ULAM/ODE/MaximalIntegralCurves.lean}.
+\texttt{UlamLib/ODE/MaximalIntegralCurves.lean}.
 
 \paragraph{Target Lean declarations.}
 This note should eventually feed declarations with names close to
 \texttt{IsRightExtendable}, \texttt{IntegralCurveExtension},
 \texttt{MaximalIntegralCurve}, and \texttt{maximalCurve\_unique}.
 
+\paragraph{Target Lean file family.}
+The track is intentionally split across
+\texttt{UlamLib/ODE/Extendability.lean},
+\texttt{UlamLib/ODE/MaximalIntegralCurve.lean}, and
+\texttt{UlamLib/ODE/LinearSystems.lean}.
+
 \section{Ambient assumptions}
 
-Fix a smooth manifold $M$, a smooth vector field $V$ on $M$, and open intervals
-$I,J \subseteq \mathbb{R}$. Every curve in this note is assumed to be a smooth
-integral curve of $V$ on its stated domain.
+Fix a smooth manifold $M$ without boundary, or restrict attention to initial
+points in the interior when boundary issues would matter. Let $V$ be a smooth
+vector field on $M$, and let $I,J \subseteq \mathbb{R}$ be open intervals.
+Every curve in this note is assumed to be a smooth integral curve of $V$ on
+its stated domain.
 
 \section{Declaration blueprint}
 

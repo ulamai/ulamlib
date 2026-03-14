@@ -1,0 +1,69 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+
+\title{Picard Groups and Cohomology on $\mathrm{Spec}(R)$}
+\author{UlamLib seed note}
+\date{}
+
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{corollary}[definition]{Corollary}
+
+\begin{document}
+\maketitle
+
+\section{Scope}
+
+This follow-on note packages the cohomological refinement of the Picard track.
+The intended Lean destination is
+\texttt{UlamLib/AlgebraicGeometry/PicardCohomology.lean}.
+
+\paragraph{Target Lean declarations.}
+This note should eventually feed declarations with names close to
+\texttt{picardToH1}, \texttt{invertibleSheafToUnitsCocycle}, and
+\texttt{picardSpecH1Equiv}.
+
+\section{Ambient assumptions}
+
+Fix a commutative ring $R$ and work on $\mathrm{Spec}(R)$ with the standard
+structure sheaf and its unit sheaf.
+
+\section{Declaration blueprint}
+
+\begin{enumerate}
+\item \texttt{invertibleSheafToUnitsCocycle}: build a cocycle from an
+invertible sheaf.
+\item \texttt{unitsCocycleToInvertibleSheaf}: the reverse construction.
+\item \texttt{picardToH1}: map from Picard classes to sheaf cohomology.
+\item \texttt{picardSpecH1Equiv}: the final identification.
+\end{enumerate}
+
+\section{Seed theorem cluster}
+
+\begin{lemma}[Tensor product respects cocycles]\label{lem:tensor-respects-cocycles}
+The cocycle attached to a tensor product of invertible sheaves is the product
+of the corresponding unit-valued cocycles.
+\end{lemma}
+
+\begin{theorem}[Picard to cohomology]\label{thm:picard-to-cohomology}
+There is a natural map from the Picard group of $R$ to
+$H^1(\mathrm{Spec}(R), \mathcal{O}_X^\times)$.
+\end{theorem}
+
+\begin{theorem}[Cohomological identification]
+\label{thm:cohomological-identification}
+The natural map from the Picard group of $R$ to
+$H^1(\mathrm{Spec}(R), \mathcal{O}_X^\times)$ is an isomorphism.
+\end{theorem}
+
+\section{Formalization order}
+
+\begin{enumerate}
+\item package the unit-valued cocycle constructions
+\item prove compatibility with tensor product
+\item define the Picard-to-cohomology map
+\item prove the final equivalence
+\end{enumerate}
+
+\end{document}

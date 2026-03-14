@@ -1,0 +1,56 @@
+name: Track task
+description: Claim or propose a formalization task from TRACKS.md.
+title: "[Track] "
+labels:
+  - track
+body:
+  - type: dropdown
+    id: track
+    attributes:
+      label: Track
+      options:
+        - Track A. Finite-dimensional linear algebra
+        - Track B. Global ODE / flow layer
+        - Track C. Stone-Weierstrass for C0
+        - Track D. Manifold differential forms
+        - Track E. Projective geometry
+        - Track F. Picard on Spec R
+        - Track G. Representation semisimplicity
+    validations:
+      required: true
+  - type: input
+    id: note_path
+    attributes:
+      label: Note path
+      placeholder: notes/StoneWeierstrassC0.tex
+    validations:
+      required: true
+  - type: input
+    id: lean_path
+    attributes:
+      label: Lean path
+      placeholder: UlamLib/Analysis/StoneWeierstrassC0/Real.lean
+    validations:
+      required: true
+  - type: textarea
+    id: declarations
+    attributes:
+      label: Candidate declarations
+      description: List the declaration names or theorem cluster this issue should land.
+      placeholder: |
+        stoneWeierstrass_C0_real
+        compactSupport_approximation
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies
+      description: List note sections, mathlib APIs, or upstream lemmas this task relies on.
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: Explain what counts as done.
+    validations:
+      required: true

@@ -1,0 +1,71 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+
+\title{Semisimplicity of Finite-Group Representations}
+\author{UlamLib seed note}
+\date{}
+
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{corollary}[definition]{Corollary}
+
+\begin{document}
+\maketitle
+
+\section{Scope}
+
+This note packages the alternate advanced track for contributors who want a
+substantial but more approachable target than Picard on $\mathrm{Spec}(R)$. The
+intended Lean destination is
+\texttt{UlamLib/RepresentationTheory/Semisimplicity.lean}.
+
+\paragraph{Target Lean declarations.}
+This note should eventually feed declarations with names close to
+\texttt{exists\_simple\_summand}, \texttt{representation\_directSum\_of\_simple},
+\texttt{character\_decomposition}, and \texttt{fdRep\_equiv\_groupAlgebraMod}.
+
+\section{Ambient assumptions}
+
+Fix a finite group $G$ and a field $k$ whose characteristic does not divide the
+order of $G$.
+
+\section{Declaration blueprint}
+
+\begin{enumerate}
+\item \texttt{exists\_simple\_summand}: every nonzero finite-dimensional
+representation contains a simple summand.
+\item \texttt{representation\_directSum\_of\_simple}: semisimple decomposition.
+\item \texttt{character\_decomposition}: expansion against irreducible
+characters.
+\item \texttt{fdRep\_equiv\_groupAlgebraMod}: bridge to modules over $k[G]$.
+\end{enumerate}
+
+\section{Seed theorem cluster}
+
+\begin{lemma}[Simple summand]\label{lem:simple-summand}
+Every nonzero finite-dimensional representation of $G$ over $k$ contains a
+simple subrepresentation that splits off as a direct summand.
+\end{lemma}
+
+\begin{theorem}[Semisimple decomposition]
+\label{thm:semisimple-decomposition}
+Every finite-dimensional representation of $G$ over $k$ is a finite direct sum
+of simple representations.
+\end{theorem}
+
+\begin{corollary}[Character decomposition]\label{cor:character-decomposition}
+The character of a finite-dimensional representation decomposes as a finite
+linear combination of irreducible characters.
+\end{corollary}
+
+\section{Formalization order}
+
+\begin{enumerate}
+\item package the simple-summand statement
+\item build the finite direct-sum decomposition
+\item derive the character decomposition
+\item add the bridge to group-algebra modules
+\end{enumerate}
+
+\end{document}

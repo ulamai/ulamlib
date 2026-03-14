@@ -2,8 +2,8 @@
 
 UlamLib is a public starter library of high-value formalization targets for
 [UlamAI Prover](https://github.com/ulamai/ulamai). It pairs theorem-dense
-LaTeX notes with matching Lean destination files so contributors can clone the
-repo and start formalizing something useful immediately.
+LaTeX notes with matching Lean scaffolds so contributors can clone the repo and
+start formalizing something useful immediately.
 
 The focus is not "the biggest famous book." The focus is compact reusable Lean
 packages that fit UlamAI's current strengths:
@@ -18,9 +18,11 @@ textbook.
 
 ## What lives here
 
-- `notes/*.tex`: seed notes intended to be formalized with `ulam formalize`
-- `ULAM/**/*.lean`: matching Lean target modules and placeholders
-- backlog tracks organized by dependency order and expected difficulty
+- `notes/*.tex`: blueprint-style notes intended to be formalized with
+  `ulam formalize`
+- `UlamLib/**/*.lean`: split Lean scaffolds grouped by reusable submodules
+- `TRACKS.md`: the backlog, track decomposition, and milestone structure
+- `CONTRIBUTING.md`: contribution rules and repository conventions
 - `notes/TEMPLATE.tex`: a formalization-first template for adding new targets
 
 ## Repository layout
@@ -34,14 +36,42 @@ notes/
   ManifoldForms.tex
   ProjectiveIncidence.tex
   PicardSpec.tex
+  PicardCohomology.tex
+  RepresentationSemisimplicity.tex
 
-ULAM/
+UlamLib/
   LinearAlgebra/RowReduction.lean
+  LinearAlgebra/RowOp.lean
+  LinearAlgebra/Echelon.lean
+  LinearAlgebra/GaussianElimination.lean
+  LinearAlgebra/RREF.lean
   ODE/MaximalIntegralCurves.lean
+  ODE/Extendability.lean
+  ODE/MaximalIntegralCurve.lean
+  ODE/LinearSystems.lean
   Analysis/StoneWeierstrassC0.lean
+  Analysis/StoneWeierstrassC0/Defs.lean
+  Analysis/StoneWeierstrassC0/Lattice.lean
+  Analysis/StoneWeierstrassC0/Real.lean
+  Analysis/StoneWeierstrassC0/Complex.lean
   Geometry/ManifoldForms.lean
+  Geometry/ManifoldForms/Defs.lean
+  Geometry/ManifoldForms/Wedge.lean
+  Geometry/ManifoldForms/Pullback.lean
+  Geometry/ManifoldForms/ExteriorDerivative.lean
+  Geometry/ManifoldForms/DeRhamComplex.lean
   Geometry/ProjectiveIncidence.lean
+  Geometry/ProjectiveIncidence/Defs.lean
+  Geometry/ProjectiveIncidence/ProjectiveSubspaces.lean
+  Geometry/ProjectiveIncidence/Lines.lean
+  Geometry/ProjectiveIncidence/Axioms.lean
+  Geometry/ProjectiveIncidence/Maps.lean
   AlgebraicGeometry/PicardSpec.lean
+  AlgebraicGeometry/PicardSpec/Defs.lean
+  AlgebraicGeometry/PicardSpec/LocalCriterion.lean
+  AlgebraicGeometry/PicardSpec/Sheafification.lean
+  AlgebraicGeometry/PicardCohomology.lean
+  RepresentationTheory/Semisimplicity.lean
 ```
 
 ## Quickstart With UlamAI Prover
@@ -78,29 +108,29 @@ cd ulamlib
 ulam -lean
 ```
 
-Formalize the easiest first target:
-
-```bash
-ulam formalize notes/RowReduction.tex \
-  --out ULAM/LinearAlgebra/RowReduction.lean \
-  --segment
-```
-
-For longer notes, use segmentation and keep artifacts:
+Formalize the showcase starter track:
 
 ```bash
 ulam formalize notes/StoneWeierstrassC0.tex \
-  --out ULAM/Analysis/StoneWeierstrassC0.lean \
+  --out UlamLib/Analysis/StoneWeierstrassC0/Real.lean \
+  --segment
+```
+
+For longer notes, keep segmentation on and preserve artifacts:
+
+```bash
+ulam formalize notes/ManifoldForms.tex \
+  --out UlamLib/Geometry/ManifoldForms/Defs.lean \
   --segment \
   --segment-words 1200 \
-  --artifacts-dir runs/stone_weierstrass
+  --artifacts-dir runs/manifold_forms_defs
 ```
 
 If you want an LLM-only loop with Lean diagnostics:
 
 ```bash
 ulam formalize notes/RowReduction.tex \
-  --out ULAM/LinearAlgebra/RowReduction.lean \
+  --out UlamLib/LinearAlgebra/RowOp.lean \
   --proof-backend llm \
   --lean-backend lsp \
   --segment
@@ -110,8 +140,20 @@ Notes:
 
 - local declaration retrieval is enabled by default during formalization
 - `--segment` is the default recommendation for every note in this repo
-- start with the Track A-C files before moving to the harder geometry or
-  algebraic geometry targets
+- start with Track C, then Track A, before moving to geometry or algebraic
+  geometry targets
+
+## Contributor Plumbing
+
+Before broadening contributor access, this repo now treats repository hygiene as
+part of the product:
+
+- [TRACKS.md](TRACKS.md) holds the assignable backlog instead of overloading the
+  README
+- [CONTRIBUTING.md](CONTRIBUTING.md) defines naming, scope, and PR rules
+- [LICENSE](LICENSE) makes the contribution terms explicit
+- `.github/ISSUE_TEMPLATE` and `.github/PULL_REQUEST_TEMPLATE.md` provide the
+  default collaboration workflow
 
 ## Making Notes Formalization-Ready
 
@@ -124,142 +166,23 @@ for UlamAI should have:
 - a seed theorem cluster broken into declarations small enough to formalize
   incrementally
 - an explicit dependency order instead of a long proof-heavy narrative
+- a clear mapping from note sections to one or more Lean submodules
 
 When adding a new target, start from `notes/TEMPLATE.tex` and keep the note
 definition-first. Large proof essays, overloaded notation, and implicit
 hypotheses make formalization harder.
 
-## Best First Targets
-
-The fastest credible first public release is:
-
-1. finite-dimensional linear algebra
-2. maximal integral curves / flow layer
-3. Stone-Weierstrass for `C_0`
-
-After that, the best next expansion is:
-
-1. manifold differential forms
-2. projective incidence geometry
-
-The flagship advanced target is Picard groups and invertible sheaves on
-`Spec R`.
-
-## Tracks
-
-### Track A. Finite-dimensional linear algebra
-
-The most immediately useful gap is a student-facing elimination and
-canonical-forms package built on top of existing mathlib matrix
-infrastructure.
-
-1. row and column operation DSL
-2. echelon predicates
-3. Gaussian elimination with certificate
-4. RREF package
-5. canonical-forms bridge
-
-Paths:
-
-- `notes/RowReduction.tex`
-- `ULAM/LinearAlgebra/RowReduction.lean`
-
-### Track B. Global ODE / flow layer
-
-mathlib already has local existence and uniqueness machinery. The next layer is
-maximal curves and clean global flow statements.
-
-6. extendability predicate
-7. maximal integral-curve object
-8. uniqueness of maximal curves
-9. continuation and global-existence criteria
-10. constant and linear systems
-
-Paths:
-
-- `notes/MaximalIntegralCurves.tex`
-- `ULAM/ODE/MaximalIntegralCurves.lean`
-
-### Track C. Stone-Weierstrass for `C_0`
-
-This is close to ideal UlamAI material: short definitions, crisp theorems, and
-high reuse value.
-
-11. separation API for `C_0(X, k)`
-12. lattice and closure lemmas
-13. real `C_0` Stone-Weierstrass
-14. complex and star version
-15. applications file
-
-Paths:
-
-- `notes/StoneWeierstrassC0.tex`
-- `ULAM/Analysis/StoneWeierstrassC0.lean`
-
-### Track D. Manifold differential forms
-
-This is a bridge project: mathlib already has the differential-form and
-manifold ingredients, but the bundled manifold layer is still thin.
-
-16. bundled manifold `0`- and `1`-forms
-17. bundled smooth `n`-forms and wedge product
-18. pullback of forms
-19. exterior derivative on manifolds
-20. `d o d = 0` and the de Rham complex
-
-Paths:
-
-- `notes/ManifoldForms.tex`
-- `ULAM/Geometry/ManifoldForms.lean`
-
-### Track E. Projective geometry
-
-This track builds an incidence layer on top of the existing projectivization
-machinery.
-
-21. collinearity relation
-22. projective lines and incidence
-23. two distinct points determine a unique line
-24. projective-geometry axioms
-25. incidence-preserving maps
-
-Paths:
-
-- `notes/ProjectiveIncidence.tex`
-- `ULAM/Geometry/ProjectiveIncidence.lean`
-
-### Track F. Picard / `Spec R`
-
-This is the hardest target in the repo, but also one of the clearest ways for
-UlamLib to become strategically important.
-
-26. local criterion for invertible modules
-27. module to invertible sheaf on `Spec R`
-28. projective constant-rank iff locally free on `Spec R`
-29. `Pic R` as invertible sheaves on `Spec R`
-30. cohomological formulation
-
-Paths:
-
-- `notes/PicardSpec.tex`
-- `ULAM/AlgebraicGeometry/PicardSpec.lean`
-
 ## Contributing
 
-Good UlamLib targets have the following shape:
+The contributor workflow now lives in [CONTRIBUTING.md](CONTRIBUTING.md). The
+short version is:
 
-- medium-size notes, not whole books
-- clear theorem statements and explicit proof structure
-- high reuse value in later formalization projects
-- a clean one-to-one mapping from a `.tex` note to a Lean module
+1. pick an issue or open one from the track-task template
+2. keep the note blueprint and Lean scaffold aligned
+3. submit small PRs that land one theorem cluster or one file family at a time
 
-When adding a new target:
-
-1. add a note under `notes/`
-2. add the matching Lean destination under `ULAM/`
-3. keep the dependency order explicit
-4. prefer theorem clusters that can be formalized incrementally
-5. use stable labels and candidate Lean names throughout the note
+The full track backlog, priorities, and decomposition now live in
+[TRACKS.md](TRACKS.md).
 
 ## References
 
@@ -270,3 +193,4 @@ When adding a new target:
 - [Mathlib differential forms](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/Calculus/DifferentialForm/Basic.html)
 - [Mathlib projectivization](https://leanprover-community.github.io/mathlib4_docs/Mathlib/LinearAlgebra/Projectivization/Independence.html)
 - [Mathlib Picard group](https://leanprover-community.github.io/mathlib4_docs/Mathlib/RingTheory/PicardGroup.html)
+- [Mathlib Maschke / finite-group representations](https://leanprover-community.github.io/mathlib4_docs/Mathlib/RepresentationTheory/Maschke.html)

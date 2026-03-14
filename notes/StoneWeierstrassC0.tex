@@ -17,12 +17,23 @@
 
 This note packages a non-compact Stone-Weierstrass target for
 $C_0(X, \mathbb{R})$ and related function algebras. The intended Lean
-destination is \texttt{ULAM/Analysis/StoneWeierstrassC0.lean}.
+destination is \texttt{UlamLib/Analysis/StoneWeierstrassC0.lean}.
 
 \paragraph{Target Lean declarations.}
 This note should eventually feed declarations with names close to
 \texttt{SeparatesPointsC0}, \texttt{VanishesNowhereC0},
 \texttt{closedUnderAbs\_sup\_inf}, and \texttt{stoneWeierstrass\_C0\_real}.
+
+\paragraph{Target Lean file family.}
+The track is intentionally split across
+\texttt{UlamLib/Analysis/StoneWeierstrassC0/Defs.lean},
+\texttt{UlamLib/Analysis/StoneWeierstrassC0/Lattice.lean},
+\texttt{UlamLib/Analysis/StoneWeierstrassC0/Real.lean}, and
+\texttt{UlamLib/Analysis/StoneWeierstrassC0/Complex.lean}.
+
+\paragraph{Showcase role.}
+This is the preferred first public theorem cluster for UlamLib contributors and
+the intended starter demo for the repository.
 
 \section{Ambient assumptions}
 
