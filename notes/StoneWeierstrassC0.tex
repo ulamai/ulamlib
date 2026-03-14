@@ -1,4 +1,5 @@
 \documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
 
 \title{Stone-Weierstrass for Functions Vanishing at Infinity}
 \author{UlamLib seed note}
@@ -18,42 +19,77 @@ This note packages a non-compact Stone-Weierstrass target for
 $C_0(X, \mathbb{R})$ and related function algebras. The intended Lean
 destination is \texttt{ULAM/Analysis/StoneWeierstrassC0.lean}.
 
+\paragraph{Target Lean declarations.}
+This note should eventually feed declarations with names close to
+\texttt{SeparatesPointsC0}, \texttt{VanishesNowhereC0},
+\texttt{closedUnderAbs\_sup\_inf}, and \texttt{stoneWeierstrass\_C0\_real}.
+
+\section{Ambient assumptions}
+
+Fix a locally compact Hausdorff space $X$. All function spaces are real-valued
+unless a more general codomain is stated explicitly.
+
+\section{Declaration blueprint}
+
+\begin{enumerate}
+\item \texttt{SeparatesPointsC0}: separation predicate for subalgebras of
+$C_0(X,\mathbb{R})$.
+\item \texttt{VanishesNowhereC0}: nonvanishing hypothesis used in the main
+theorem.
+\item \texttt{ClosedUnderAbs}: closure under pointwise absolute value.
+\item \texttt{closedUnderSup}: closure under pointwise supremum.
+\item \texttt{closedUnderInf}: closure under pointwise infimum.
+\item \texttt{stoneWeierstrass\_C0\_real}: main density theorem.
+\end{enumerate}
+
 \section{Core definitions}
 
-\begin{definition}
+\begin{definition}[$C_0(X,\mathbb{R})$]\label{def:c0-space}
 Let $X$ be a locally compact Hausdorff space. The algebra $C_0(X, \mathbb{R})$
 consists of continuous real-valued functions on $X$ that vanish at infinity.
 \end{definition}
 
-\begin{definition}
+\begin{definition}[Separates points]\label{def:separates-points}
 A subalgebra $A \subseteq C_0(X, \mathbb{R})$ separates points if for every
 distinct pair $x,y \in X$ there exists $f \in A$ such that $f(x) \neq f(y)$.
 \end{definition}
 
+\begin{definition}[Vanishes nowhere]\label{def:vanishes-nowhere}
+A subset $A \subseteq C_0(X, \mathbb{R})$ vanishes nowhere if for every
+$x \in X$ there exists $f \in A$ such that $f(x) \neq 0$.
+\end{definition}
+
 \section{Seed theorem cluster}
 
-\begin{lemma}
+\begin{lemma}[Absolute value implies lattice closure]
+\label{lem:absolute-value-implies-lattice-closure}
 If a real subalgebra of $C_0(X, \mathbb{R})$ is closed under absolute value,
 then it is closed under pointwise supremum and infimum.
 \end{lemma}
 
-\begin{theorem}[Real $C_0$ Stone-Weierstrass]
+\begin{lemma}[Closed-sublattice packaging]\label{lem:closed-sublattice-packaging}
+A uniformly closed real subalgebra of $C_0(X,\mathbb{R})$ that is closed under
+absolute value determines a closed sublattice of $C_0(X,\mathbb{R})$.
+\end{lemma}
+
+\begin{theorem}[Real $C_0$ Stone-Weierstrass]\label{thm:real-c0-stone-weierstrass}
 Let $X$ be locally compact Hausdorff and let
 $A \subseteq C_0(X, \mathbb{R})$ be a subalgebra that separates points and
 vanishes nowhere. Then $A$ is dense in $C_0(X, \mathbb{R})$ for the supremum
 norm.
 \end{theorem}
 
-\begin{corollary}
+\begin{corollary}[Approximation corollary]\label{cor:compact-support-approximation}
 Compactly supported continuous functions can be uniformly approximated by
 elements of any dense subalgebra satisfying the hypotheses above.
 \end{corollary}
 
-\section{Formalization backlog}
+\section{Formalization order}
 
 \begin{enumerate}
-\item Define the separation API for subalgebras of $C_0(X, k)$.
+\item Define the separation and nonvanishing API for subalgebras of $C_0$.
 \item Add lattice and closure lemmas in the real case.
+\item Package the closed-sublattice argument.
 \item Prove the real Stone-Weierstrass theorem for $C_0$.
 \item Extend to complex and star-subalgebra variants.
 \item Package common approximation corollaries.

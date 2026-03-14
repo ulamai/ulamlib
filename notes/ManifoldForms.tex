@@ -1,4 +1,5 @@
 \documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
 
 \title{Bundled Differential Forms on Manifolds}
 \author{UlamLib seed note}
@@ -18,51 +19,81 @@ This note is a bridge target between existing differential-form infrastructure
 on normed spaces and a bundled manifold-level API. The intended Lean
 destination is \texttt{ULAM/Geometry/ManifoldForms.lean}.
 
+\paragraph{Target Lean declarations.}
+This note should eventually feed declarations with names close to
+\texttt{SmoothZeroForm}, \texttt{SmoothOneForm}, \texttt{pullback},
+\texttt{exteriorDerivative}, and \texttt{deRhamComplex}.
+
+\section{Ambient assumptions}
+
+Fix smooth manifolds $M$ and $N$ over the same model with a smooth map
+$f : M \to N$. Differential forms are assumed smooth throughout.
+
+\section{Declaration blueprint}
+
+\begin{enumerate}
+\item \texttt{SmoothZeroForm M}: bundled smooth scalar-valued functions.
+\item \texttt{SmoothOneForm M}: bundled smooth cotangent-valued sections.
+\item \texttt{SmoothForm n M}: bundled smooth $n$-forms.
+\item \texttt{pullback}: pullback of bundled smooth forms.
+\item \texttt{exteriorDerivative}: bundled exterior derivative.
+\item \texttt{deRhamComplex}: the resulting cochain complex.
+\end{enumerate}
+
 \section{Core definitions}
 
-\begin{definition}
+\begin{definition}[Smooth differential $0$-form]\label{def:smooth-zero-form}
 A smooth differential $0$-form on a smooth manifold $M$ is a smooth real-valued
 function on $M$.
 \end{definition}
 
-\begin{definition}
+\begin{definition}[Smooth differential $1$-form]\label{def:smooth-one-form}
 A smooth differential $1$-form on $M$ assigns to each point of $M$ a continuous
 linear functional on the tangent space at that point, varying smoothly with the
 point.
 \end{definition}
 
-\begin{definition}
+\begin{definition}[Pullback of forms]\label{def:pullback-of-forms}
 For a smooth map $f : M \to N$, the pullback $f^* \omega$ of a differential form
 $\omega$ on $N$ is obtained by precomposing with the tangent map of $f$.
 \end{definition}
 
 \section{Seed theorem cluster}
 
-\begin{lemma}
+\begin{lemma}[Pullback respects identity and composition]
+\label{lem:pullback-functoriality}
+Pullback by the identity map is the identity, and pullback along a composition
+is the composition of pullbacks.
+\end{lemma}
+
+\begin{lemma}[Pullback preserves wedge products]\label{lem:pullback-preserves-wedge}
 Pullback preserves wedge products.
 \end{lemma}
 
-\begin{theorem}
+\begin{theorem}[Exterior derivative commutes with pullback]
+\label{thm:exterior-derivative-commutes-with-pullback}
 The exterior derivative commutes with pullback.
 \end{theorem}
 
-\begin{theorem}
+\begin{theorem}[Second exterior derivative vanishes]
+\label{thm:second-exterior-derivative-vanishes}
 For every smooth differential form $\omega$ on a smooth manifold,
 $d(d\omega) = 0$.
 \end{theorem}
 
-\begin{corollary}
+\begin{corollary}[de Rham complex]\label{cor:de-rham-complex}
 Smooth differential forms on a manifold form a cochain complex under the
 exterior derivative.
 \end{corollary}
 
-\section{Formalization backlog}
+\section{Formalization order}
 
 \begin{enumerate}
 \item Define bundled smooth $0$- and $1$-forms on manifolds.
 \item Extend to bundled smooth $n$-forms and the wedge product.
 \item Add pullback under smooth maps and prove functoriality.
 \item Define the exterior derivative on bundled manifold forms.
+\item Prove pullback and exterior-derivative compatibility.
 \item Package the de Rham complex.
 \end{enumerate}
 

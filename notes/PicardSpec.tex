@@ -1,4 +1,5 @@
 \documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
 
 \title{Picard Groups and Invertible Sheaves on $\mathrm{Spec}(R)$}
 \author{UlamLib seed note}
@@ -18,44 +19,70 @@ This note is the flagship advanced algebraic-geometry target in UlamLib. The
 intended Lean destination is
 \texttt{ULAM/AlgebraicGeometry/PicardSpec.lean}.
 
+\paragraph{Target Lean declarations.}
+This note should eventually feed declarations with names close to
+\texttt{IsInvertibleModule}, \texttt{toInvertibleSheaf},
+\texttt{picardSpecEquiv}, and \texttt{picardToH1}.
+
+\section{Ambient assumptions}
+
+Fix a commutative ring $R$. Modules are $R$-modules, and sheaves live on
+$\mathrm{Spec}(R)$ with the standard structure sheaf.
+
+\section{Declaration blueprint}
+
+\begin{enumerate}
+\item \texttt{IsInvertibleModule}: predicate for invertible modules.
+\item \texttt{isLocallyFreeRankOne}: local rank-one condition.
+\item \texttt{toInvertibleSheaf}: module-to-sheaf construction.
+\item \texttt{tensorToSheaf}: compatibility of tensor product with the sheaf
+construction.
+\item \texttt{picardSpecEquiv}: the Picard-group identification.
+\end{enumerate}
+
 \section{Core definitions}
 
-\begin{definition}
+\begin{definition}[Invertible module]\label{def:invertible-module}
 An $R$-module $L$ is invertible if there exists an $R$-module $M$ such that
 $L \otimes_R M \cong R$.
 \end{definition}
 
-\begin{definition}
+\begin{definition}[Invertible sheaf]\label{def:invertible-sheaf}
 An invertible sheaf on $\mathrm{Spec}(R)$ is a locally free sheaf of rank one.
 \end{definition}
 
-\begin{definition}
+\begin{definition}[Picard group]\label{def:picard-group}
 The Picard group $\mathrm{Pic}(R)$ is the group of isomorphism classes of
 invertible $R$-modules under tensor product.
 \end{definition}
 
 \section{Seed theorem cluster}
 
-\begin{theorem}[Local criterion]
+\begin{lemma}[Tensor compatibility]\label{lem:tensor-compatibility}
+The module-to-sheaf construction is compatible with tensor product.
+\end{lemma}
+
+\begin{theorem}[Local criterion]\label{thm:local-criterion}
 An $R$-module is invertible if and only if it is locally free of rank one at
 every prime ideal of $R$.
 \end{theorem}
 
-\begin{theorem}
+\begin{theorem}[Module to invertible sheaf]\label{thm:module-to-invertible-sheaf}
 Every invertible $R$-module determines an invertible sheaf on
 $\mathrm{Spec}(R)$.
 \end{theorem}
 
-\begin{theorem}
+\begin{theorem}[Picard identification]\label{thm:picard-identification}
 The assignment from invertible modules to invertible sheaves induces an
 identification of $\mathrm{Pic}(R)$ with the group of isomorphism classes of
 invertible sheaves on $\mathrm{Spec}(R)$.
 \end{theorem}
 
-\section{Formalization backlog}
+\section{Formalization order}
 
 \begin{enumerate}
-\item Prove the local rank-one criterion for invertible modules.
+\item Define invertible modules and the local rank-one condition.
+\item Prove local lemmas about localization and tensor behavior.
 \item Construct the sheaf attached to an invertible module.
 \item Extend the bridge to locally free modules of constant rank.
 \item Identify $\mathrm{Pic}(R)$ with invertible sheaves on $\mathrm{Spec}(R)$.

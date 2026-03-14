@@ -21,11 +21,13 @@ textbook.
 - `notes/*.tex`: seed notes intended to be formalized with `ulam formalize`
 - `ULAM/**/*.lean`: matching Lean target modules and placeholders
 - backlog tracks organized by dependency order and expected difficulty
+- `notes/TEMPLATE.tex`: a formalization-first template for adding new targets
 
 ## Repository layout
 
 ```text
 notes/
+  TEMPLATE.tex
   RowReduction.tex
   MaximalIntegralCurves.tex
   StoneWeierstrassC0.tex
@@ -110,6 +112,22 @@ Notes:
 - `--segment` is the default recommendation for every note in this repo
 - start with the Track A-C files before moving to the harder geometry or
   algebraic geometry targets
+
+## Making Notes Formalization-Ready
+
+The notes in this repo are meant to be more than idea sketches. A useful note
+for UlamAI should have:
+
+- one clear Lean target file
+- an ambient assumptions section that fixes notation and hypotheses up front
+- labeled definitions and theorems with stable candidate Lean names
+- a seed theorem cluster broken into declarations small enough to formalize
+  incrementally
+- an explicit dependency order instead of a long proof-heavy narrative
+
+When adding a new target, start from `notes/TEMPLATE.tex` and keep the note
+definition-first. Large proof essays, overloaded notation, and implicit
+hypotheses make formalization harder.
 
 ## Best First Targets
 
@@ -241,6 +259,7 @@ When adding a new target:
 2. add the matching Lean destination under `ULAM/`
 3. keep the dependency order explicit
 4. prefer theorem clusters that can be formalized incrementally
+5. use stable labels and candidate Lean names throughout the note
 
 ## References
 

@@ -1,0 +1,86 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+
+\title{Title of the Target}
+\author{UlamLib note template}
+\date{}
+
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{corollary}[definition]{Corollary}
+
+\begin{document}
+\maketitle
+
+\section{Scope}
+
+State the intended Lean target file and the mathematical layer this note is
+meant to add.
+
+\paragraph{Target Lean file.}
+\texttt{ULAM/Category/Target.lean}
+
+\section{Ambient assumptions}
+
+Fix the ambient objects once and keep them stable for the rest of the note.
+For example:
+
+\begin{itemize}
+\item a field $K$,
+\item finite index types,
+\item a smooth manifold $M$,
+\item a commutative ring $R$.
+\end{itemize}
+
+\section{Declaration blueprint}
+
+List the declarations you expect to exist in Lean before or during the main
+theorem cluster.
+
+\begin{enumerate}
+\item \texttt{CandidateName1}: one-sentence description.
+\item \texttt{CandidateName2}: one-sentence description.
+\item \texttt{CandidateName3}: one-sentence description.
+\end{enumerate}
+
+\section{Core definitions}
+
+\begin{definition}[Primary object]\label{def:primary-object}
+State the main object with all hypotheses explicit.
+\end{definition}
+
+\begin{definition}[Secondary predicate]\label{def:secondary-predicate}
+State the next object or property that later theorems will use.
+\end{definition}
+
+\section{Seed theorem cluster}
+
+\begin{lemma}[First small lemma]\label{lem:first-small-lemma}
+State a small reusable declaration that should be formalized before the main
+theorem.
+\end{lemma}
+
+\begin{lemma}[Second small lemma]\label{lem:second-small-lemma}
+State another local lemma with explicit hypotheses.
+\end{lemma}
+
+\begin{theorem}[Main target]\label{thm:main-target}
+State the main theorem in a form that can be mapped directly to a Lean
+declaration.
+\end{theorem}
+
+\begin{corollary}[Immediate application]\label{cor:immediate-application}
+State a short downstream corollary.
+\end{corollary}
+
+\section{Formalization order}
+
+\begin{enumerate}
+\item definitions and notation
+\item local lemmas
+\item the main theorem
+\item packaging and corollaries
+\end{enumerate}
+
+\end{document}

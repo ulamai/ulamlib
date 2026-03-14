@@ -1,4 +1,5 @@
 \documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
 
 \title{Row Reduction and Canonical Matrix Forms}
 \author{UlamLib seed note}
@@ -18,9 +19,33 @@ This note is a seed target for a student-facing linear algebra layer over a
 field. The intended Lean destination is
 \texttt{ULAM/LinearAlgebra/RowReduction.lean}.
 
+\paragraph{Target Lean declarations.}
+This note should eventually feed declarations with names close to
+\texttt{RowOp}, \texttt{IsRowEchelon}, \texttt{IsReducedRowEchelon},
+\texttt{gaussianElimination}, and \texttt{rank\_eq\_pivotCount}.
+
+\section{Ambient assumptions}
+
+Fix a field $K$ and natural numbers $m,n$. Matrices are viewed as elements of
+$K^{m \times n}$, and every construction should be compatible with the finite
+indexing types used by matrix APIs in Lean.
+
+\section{Declaration blueprint}
+
+\begin{enumerate}
+\item \texttt{RowOp K m}: elementary row operations on $m$ rows.
+\item \texttt{RowOp.apply}: action of a row operation on an $m \times n$
+matrix.
+\item \texttt{IsRowEchelon}: predicate for echelon shape.
+\item \texttt{IsReducedRowEchelon}: predicate for reduced echelon shape.
+\item \texttt{pivotColumns}: finite set or list of pivot columns.
+\item \texttt{gaussianElimination}: elimination algorithm returning a
+certificate.
+\end{enumerate}
+
 \section{Core definitions}
 
-\begin{definition}
+\begin{definition}[Elementary row operation]\label{def:elementary-row-operation}
 An elementary row operation on an $m \times n$ matrix over a field $K$ is one
 of the following:
 \begin{enumerate}
@@ -30,51 +55,68 @@ of the following:
 \end{enumerate}
 \end{definition}
 
-\begin{definition}
+\begin{definition}[Row echelon form]\label{def:row-echelon-form}
 A matrix is in row echelon form if every nonzero row lies above every zero row,
 the leading nonzero entry of each nonzero row lies strictly to the right of the
 leading entry of the previous nonzero row, and every entry below a leading
 entry is zero.
 \end{definition}
 
-\begin{definition}
+\begin{definition}[Reduced row echelon form]\label{def:reduced-row-echelon-form}
 A matrix is in reduced row echelon form if it is in row echelon form, every
 leading entry is equal to $1$, and every other entry in a pivot column is zero.
 \end{definition}
 
+\begin{definition}[Pivot column]\label{def:pivot-column}
+A pivot column of a row echelon matrix is a column containing a leading entry
+of some nonzero row.
+\end{definition}
+
 \section{Seed theorem cluster}
 
-\begin{lemma}
+\begin{lemma}[Invertibility of row operations]\label{lem:row-ops-are-invertible}
+Each elementary row operation is invertible, and its inverse is again an
+elementary row operation.
+\end{lemma}
+
+\begin{lemma}[Row operations preserve row equivalence]
+\label{lem:row-ops-preserve-row-equivalence}
 Each elementary row operation preserves row equivalence.
 \end{lemma}
 
-\begin{theorem}[Existence of echelon form]
+\begin{lemma}[Row operations preserve rank]\label{lem:row-ops-preserve-rank}
+If two matrices are row-equivalent, then they have the same rank.
+\end{lemma}
+
+\begin{theorem}[Existence of echelon form]\label{thm:existence-of-echelon-form}
 Every matrix over a field is row-equivalent to a matrix in row echelon form.
 \end{theorem}
 
 \begin{theorem}[Existence of reduced row echelon form]
+\label{thm:existence-of-reduced-row-echelon-form}
 Every matrix over a field is row-equivalent to a matrix in reduced row echelon
 form.
 \end{theorem}
 
-\begin{theorem}[Rank from pivots]
+\begin{theorem}[Rank from pivots]\label{thm:rank-from-pivots}
 If a matrix is in reduced row echelon form, then its rank is equal to the
 number of pivot columns.
 \end{theorem}
 
-\begin{corollary}
+\begin{corollary}[Basis of the solution space]\label{cor:basis-of-kernel}
 Every homogeneous linear system over a field admits a basis of solutions that
 can be extracted from a reduced row echelon form computation.
 \end{corollary}
 
-\section{Formalization backlog}
+\section{Formalization order}
 
 \begin{enumerate}
-\item Define a row and column operation DSL.
+\item Define \texttt{RowOp} and its action on matrices.
+\item Prove invertibility and row-equivalence lemmas for elementary operations.
 \item Define pivot positions and echelon predicates.
-\item Implement Gaussian elimination with a certificate of row operations.
-\item Package reduced row echelon form and rank computations.
-\item Bridge the elimination API to canonical-form statements.
+\item Implement elimination with a row-operation certificate.
+\item Prove the reduced-row-echelon rank theorem and extract kernel data.
+\item Bridge the concrete elimination API to canonical-form statements.
 \end{enumerate}
 
 \end{document}

@@ -1,4 +1,5 @@
 \documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
 
 \title{Maximal Integral Curves and Flow Extensions}
 \author{UlamLib seed note}
@@ -18,55 +19,79 @@ This note targets a clean global ODE layer on top of local integral-curve
 machinery. The intended Lean destination is
 \texttt{ULAM/ODE/MaximalIntegralCurves.lean}.
 
+\paragraph{Target Lean declarations.}
+This note should eventually feed declarations with names close to
+\texttt{IsRightExtendable}, \texttt{IntegralCurveExtension},
+\texttt{MaximalIntegralCurve}, and \texttt{maximalCurve\_unique}.
+
+\section{Ambient assumptions}
+
+Fix a smooth manifold $M$, a smooth vector field $V$ on $M$, and open intervals
+$I,J \subseteq \mathbb{R}$. Every curve in this note is assumed to be a smooth
+integral curve of $V$ on its stated domain.
+
+\section{Declaration blueprint}
+
+\begin{enumerate}
+\item \texttt{IntegralCurveExtension}: data of one curve extending another.
+\item \texttt{IsRightExtendable}: extendability predicate at a right endpoint.
+\item \texttt{IsLeftExtendable}: left-endpoint variant.
+\item \texttt{MaximalIntegralCurve}: a curve together with its maximal open
+interval of existence.
+\item \texttt{compatibleOnOverlap}: compatibility relation used for gluing.
+\end{enumerate}
+
 \section{Core definitions}
 
-\begin{definition}
+\begin{definition}[Integral curve]\label{def:integral-curve}
 Let $M$ be a smooth manifold and let $V$ be a smooth vector field on $M$. An
 integral curve of $V$ is a smooth map $\gamma : I \to M$ on an interval
 $I \subseteq \mathbb{R}$ such that $\gamma'(t) = V(\gamma(t))$ for all
 $t \in I$.
 \end{definition}
 
-\begin{definition}
+\begin{definition}[Right extendability]\label{def:right-extendability}
 A local integral curve is extendable to the right endpoint of its interval if
 there exists a strictly larger interval and an integral curve on that larger
 interval that restricts to the original curve.
 \end{definition}
 
-\begin{definition}
+\begin{definition}[Maximal integral curve]\label{def:maximal-integral-curve}
 A maximal integral curve is an integral curve together with an open interval of
 existence that admits no further extension.
 \end{definition}
 
 \section{Seed theorem cluster}
 
-\begin{lemma}
+\begin{lemma}[Overlap uniqueness]\label{lem:overlap-uniqueness}
 If two local integral curves of the same smooth vector field agree at one point
 in the intersection of their domains, then they agree on every connected
 component of the overlap containing that point.
 \end{lemma}
 
-\begin{theorem}[Uniqueness of maximal curves]
+\begin{lemma}[Patching on overlap]\label{lem:patching-on-overlap}
+Compatible local integral curves can be glued along overlapping intervals to
+produce a larger local integral curve.
+\end{lemma}
+
+\begin{theorem}[Uniqueness of maximal curves]\label{thm:uniqueness-of-maximal-curves}
 Two maximal integral curves with the same initial condition agree on the
 intersection of their domains.
 \end{theorem}
 
-\begin{theorem}[Patching on overlap]
-Compatible local integral curves can be glued along overlapping intervals to
-produce a larger local integral curve.
-\end{theorem}
-
-\begin{corollary}
+\begin{corollary}[Existence from extendability data]
+\label{cor:existence-from-extendability}
 If every local integral curve through a point can be extended past each finite
 endpoint, then there exists a maximal integral curve through that point.
 \end{corollary}
 
-\section{Formalization backlog}
+\section{Formalization order}
 
 \begin{enumerate}
-\item Define extendability predicates for interval endpoints.
-\item Package maximal integral curves as first-class objects.
-\item Prove uniqueness of maximal curves from overlap uniqueness.
+\item Package extension data and endpoint extendability predicates.
+\item Prove overlap uniqueness and the gluing lemma.
+\item Define maximal integral curves as bundled objects.
+\item Prove maximal-curve uniqueness from overlap uniqueness.
 \item Add continuation criteria for bounded vector fields or compact manifolds.
 \item Connect constant and linear systems to the matrix exponential API.
 \end{enumerate}
