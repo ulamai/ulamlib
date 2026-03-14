@@ -1,0 +1,74 @@
+\documentclass[11pt]{article}
+
+\title{Maximal Integral Curves and Flow Extensions}
+\author{UlamLib seed note}
+\date{}
+
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{corollary}[definition]{Corollary}
+
+\begin{document}
+\maketitle
+
+\section{Scope}
+
+This note targets a clean global ODE layer on top of local integral-curve
+machinery. The intended Lean destination is
+\texttt{ULAM/ODE/MaximalIntegralCurves.lean}.
+
+\section{Core definitions}
+
+\begin{definition}
+Let $M$ be a smooth manifold and let $V$ be a smooth vector field on $M$. An
+integral curve of $V$ is a smooth map $\gamma : I \to M$ on an interval
+$I \subseteq \mathbb{R}$ such that $\gamma'(t) = V(\gamma(t))$ for all
+$t \in I$.
+\end{definition}
+
+\begin{definition}
+A local integral curve is extendable to the right endpoint of its interval if
+there exists a strictly larger interval and an integral curve on that larger
+interval that restricts to the original curve.
+\end{definition}
+
+\begin{definition}
+A maximal integral curve is an integral curve together with an open interval of
+existence that admits no further extension.
+\end{definition}
+
+\section{Seed theorem cluster}
+
+\begin{lemma}
+If two local integral curves of the same smooth vector field agree at one point
+in the intersection of their domains, then they agree on every connected
+component of the overlap containing that point.
+\end{lemma}
+
+\begin{theorem}[Uniqueness of maximal curves]
+Two maximal integral curves with the same initial condition agree on the
+intersection of their domains.
+\end{theorem}
+
+\begin{theorem}[Patching on overlap]
+Compatible local integral curves can be glued along overlapping intervals to
+produce a larger local integral curve.
+\end{theorem}
+
+\begin{corollary}
+If every local integral curve through a point can be extended past each finite
+endpoint, then there exists a maximal integral curve through that point.
+\end{corollary}
+
+\section{Formalization backlog}
+
+\begin{enumerate}
+\item Define extendability predicates for interval endpoints.
+\item Package maximal integral curves as first-class objects.
+\item Prove uniqueness of maximal curves from overlap uniqueness.
+\item Add continuation criteria for bounded vector fields or compact manifolds.
+\item Connect constant and linear systems to the matrix exponential API.
+\end{enumerate}
+
+\end{document}

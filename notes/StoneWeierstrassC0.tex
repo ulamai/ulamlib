@@ -1,0 +1,62 @@
+\documentclass[11pt]{article}
+
+\title{Stone-Weierstrass for Functions Vanishing at Infinity}
+\author{UlamLib seed note}
+\date{}
+
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{corollary}[definition]{Corollary}
+
+\begin{document}
+\maketitle
+
+\section{Scope}
+
+This note packages a non-compact Stone-Weierstrass target for
+$C_0(X, \mathbb{R})$ and related function algebras. The intended Lean
+destination is \texttt{ULAM/Analysis/StoneWeierstrassC0.lean}.
+
+\section{Core definitions}
+
+\begin{definition}
+Let $X$ be a locally compact Hausdorff space. The algebra $C_0(X, \mathbb{R})$
+consists of continuous real-valued functions on $X$ that vanish at infinity.
+\end{definition}
+
+\begin{definition}
+A subalgebra $A \subseteq C_0(X, \mathbb{R})$ separates points if for every
+distinct pair $x,y \in X$ there exists $f \in A$ such that $f(x) \neq f(y)$.
+\end{definition}
+
+\section{Seed theorem cluster}
+
+\begin{lemma}
+If a real subalgebra of $C_0(X, \mathbb{R})$ is closed under absolute value,
+then it is closed under pointwise supremum and infimum.
+\end{lemma}
+
+\begin{theorem}[Real $C_0$ Stone-Weierstrass]
+Let $X$ be locally compact Hausdorff and let
+$A \subseteq C_0(X, \mathbb{R})$ be a subalgebra that separates points and
+vanishes nowhere. Then $A$ is dense in $C_0(X, \mathbb{R})$ for the supremum
+norm.
+\end{theorem}
+
+\begin{corollary}
+Compactly supported continuous functions can be uniformly approximated by
+elements of any dense subalgebra satisfying the hypotheses above.
+\end{corollary}
+
+\section{Formalization backlog}
+
+\begin{enumerate}
+\item Define the separation API for subalgebras of $C_0(X, k)$.
+\item Add lattice and closure lemmas in the real case.
+\item Prove the real Stone-Weierstrass theorem for $C_0$.
+\item Extend to complex and star-subalgebra variants.
+\item Package common approximation corollaries.
+\end{enumerate}
+
+\end{document}

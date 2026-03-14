@@ -1,0 +1,80 @@
+\documentclass[11pt]{article}
+
+\title{Row Reduction and Canonical Matrix Forms}
+\author{UlamLib seed note}
+\date{}
+
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{corollary}[definition]{Corollary}
+
+\begin{document}
+\maketitle
+
+\section{Scope}
+
+This note is a seed target for a student-facing linear algebra layer over a
+field. The intended Lean destination is
+\texttt{ULAM/LinearAlgebra/RowReduction.lean}.
+
+\section{Core definitions}
+
+\begin{definition}
+An elementary row operation on an $m \times n$ matrix over a field $K$ is one
+of the following:
+\begin{enumerate}
+\item swap two rows,
+\item multiply a row by a nonzero scalar,
+\item add a scalar multiple of one row to another row.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}
+A matrix is in row echelon form if every nonzero row lies above every zero row,
+the leading nonzero entry of each nonzero row lies strictly to the right of the
+leading entry of the previous nonzero row, and every entry below a leading
+entry is zero.
+\end{definition}
+
+\begin{definition}
+A matrix is in reduced row echelon form if it is in row echelon form, every
+leading entry is equal to $1$, and every other entry in a pivot column is zero.
+\end{definition}
+
+\section{Seed theorem cluster}
+
+\begin{lemma}
+Each elementary row operation preserves row equivalence.
+\end{lemma}
+
+\begin{theorem}[Existence of echelon form]
+Every matrix over a field is row-equivalent to a matrix in row echelon form.
+\end{theorem}
+
+\begin{theorem}[Existence of reduced row echelon form]
+Every matrix over a field is row-equivalent to a matrix in reduced row echelon
+form.
+\end{theorem}
+
+\begin{theorem}[Rank from pivots]
+If a matrix is in reduced row echelon form, then its rank is equal to the
+number of pivot columns.
+\end{theorem}
+
+\begin{corollary}
+Every homogeneous linear system over a field admits a basis of solutions that
+can be extracted from a reduced row echelon form computation.
+\end{corollary}
+
+\section{Formalization backlog}
+
+\begin{enumerate}
+\item Define a row and column operation DSL.
+\item Define pivot positions and echelon predicates.
+\item Implement Gaussian elimination with a certificate of row operations.
+\item Package reduced row echelon form and rank computations.
+\item Bridge the elimination API to canonical-form statements.
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,64 @@
+\documentclass[11pt]{article}
+
+\title{Projective Incidence Geometry}
+\author{UlamLib seed note}
+\date{}
+
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{corollary}[definition]{Corollary}
+
+\begin{document}
+\maketitle
+
+\section{Scope}
+
+This note targets an incidence layer over existing projectivization objects.
+The intended Lean destination is
+\texttt{ULAM/Geometry/ProjectiveIncidence.lean}.
+
+\section{Core definitions}
+
+\begin{definition}
+Three points in projective space are collinear if they lie on a common
+projective line.
+\end{definition}
+
+\begin{definition}
+Given two distinct points in projective space, the line through them is the
+projectivization of the two-dimensional linear span of representatives of those
+points.
+\end{definition}
+
+\section{Seed theorem cluster}
+
+\begin{lemma}
+Collinearity is symmetric in its arguments and every triple containing repeated
+points is collinear.
+\end{lemma}
+
+\begin{theorem}[Two points determine a line]
+Two distinct points of projective space lie on a unique projective line.
+\end{theorem}
+
+\begin{theorem}
+Projectivizations of injective linear maps preserve collinearity and incidence.
+\end{theorem}
+
+\begin{corollary}
+The standard projective space attached to a vector space satisfies the basic
+incidence axioms of projective geometry.
+\end{corollary}
+
+\section{Formalization backlog}
+
+\begin{enumerate}
+\item Define collinearity.
+\item Define projective lines using existing projective subspaces.
+\item Prove uniqueness of the line through two distinct points.
+\item Derive a projective-geometry axiom package.
+\item Package incidence-preserving maps.
+\end{enumerate}
+
+\end{document}

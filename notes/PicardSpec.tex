@@ -1,0 +1,65 @@
+\documentclass[11pt]{article}
+
+\title{Picard Groups and Invertible Sheaves on $\mathrm{Spec}(R)$}
+\author{UlamLib seed note}
+\date{}
+
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{corollary}[definition]{Corollary}
+
+\begin{document}
+\maketitle
+
+\section{Scope}
+
+This note is the flagship advanced algebraic-geometry target in UlamLib. The
+intended Lean destination is
+\texttt{ULAM/AlgebraicGeometry/PicardSpec.lean}.
+
+\section{Core definitions}
+
+\begin{definition}
+An $R$-module $L$ is invertible if there exists an $R$-module $M$ such that
+$L \otimes_R M \cong R$.
+\end{definition}
+
+\begin{definition}
+An invertible sheaf on $\mathrm{Spec}(R)$ is a locally free sheaf of rank one.
+\end{definition}
+
+\begin{definition}
+The Picard group $\mathrm{Pic}(R)$ is the group of isomorphism classes of
+invertible $R$-modules under tensor product.
+\end{definition}
+
+\section{Seed theorem cluster}
+
+\begin{theorem}[Local criterion]
+An $R$-module is invertible if and only if it is locally free of rank one at
+every prime ideal of $R$.
+\end{theorem}
+
+\begin{theorem}
+Every invertible $R$-module determines an invertible sheaf on
+$\mathrm{Spec}(R)$.
+\end{theorem}
+
+\begin{theorem}
+The assignment from invertible modules to invertible sheaves induces an
+identification of $\mathrm{Pic}(R)$ with the group of isomorphism classes of
+invertible sheaves on $\mathrm{Spec}(R)$.
+\end{theorem}
+
+\section{Formalization backlog}
+
+\begin{enumerate}
+\item Prove the local rank-one criterion for invertible modules.
+\item Construct the sheaf attached to an invertible module.
+\item Extend the bridge to locally free modules of constant rank.
+\item Identify $\mathrm{Pic}(R)$ with invertible sheaves on $\mathrm{Spec}(R)$.
+\item Add the cohomological formulation when the library support is ready.
+\end{enumerate}
+
+\end{document}
