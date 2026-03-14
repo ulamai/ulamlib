@@ -3,6 +3,24 @@
 This file is the assignable backlog for UlamLib. The README stays short; track
 planning, decomposition, and milestone structure live here.
 
+## Difficulty Key
+
+- `starter`: suitable for a first or second contribution
+- `intermediate`: requires comfort with Lean and mathlib navigation
+- `advanced`: substantial project work, not a first task
+
+## Beginner Lanes
+
+If you do not know where to start, use one of these:
+
+1. `starter`: add helper lemmas in `UlamLib/Analysis/StoneWeierstrassC0/Defs.lean`
+2. `starter`: add helper lemmas in `UlamLib/LinearAlgebra/RowOp.lean`
+3. `starter`: improve assumptions and labels in `notes/StoneWeierstrassC0.tex`
+4. `starter`: improve assumptions and labels in `notes/RowReduction.tex`
+
+The best first theorem-facing track is Track C. The best first scaffold track is
+Track A.
+
 ## Milestones
 
 1. `starter-showcase`: Stone-Weierstrass for `C_0`, plus the first reusable
@@ -20,6 +38,7 @@ planning, decomposition, and milestone structure live here.
 ## Track A. Finite-Dimensional Linear Algebra
 
 Status: starter-core
+Difficulty: starter to intermediate
 
 Notes:
 
@@ -35,15 +54,21 @@ Lean modules:
 
 Issue decomposition:
 
-1. row and column operation DSL
-2. echelon predicates and pivot data
-3. Gaussian elimination with certificate
-4. reduced row echelon form packaging
-5. canonical-form bridges
+1. `starter`: row and column operation DSL
+2. `starter`: echelon predicates and pivot data
+3. `intermediate`: Gaussian elimination with certificate
+4. `intermediate`: reduced row echelon form packaging
+5. `advanced`: canonical-form bridges
+
+Good first files:
+
+- `UlamLib/LinearAlgebra/RowOp.lean`
+- `UlamLib/LinearAlgebra/Echelon.lean`
 
 ## Track B. Global ODE / Flow Layer
 
 Status: flow-layer
+Difficulty: intermediate
 
 Scope restriction:
 
@@ -72,6 +97,7 @@ Issue decomposition:
 ## Track C. Stone-Weierstrass for `C_0`
 
 Status: starter-showcase
+Difficulty: starter to intermediate
 
 Why this is the showcase starter:
 
@@ -94,16 +120,23 @@ Lean modules:
 
 Issue decomposition:
 
-1. separation API for `C_0(X, k)`
-2. nonvanishing API
-3. lattice and closure lemmas
-4. real `C_0` Stone-Weierstrass
-5. complex and star version
-6. applications and examples
+1. `starter`: separation API for `C_0(X, k)`
+2. `starter`: nonvanishing API
+3. `starter`: lattice and closure lemmas
+4. `intermediate`: real `C_0` Stone-Weierstrass
+5. `advanced`: complex and star version
+6. `starter`: applications and examples
+
+Good first files:
+
+- `UlamLib/Analysis/StoneWeierstrassC0/Defs.lean`
+- `UlamLib/Analysis/StoneWeierstrassC0/Lattice.lean`
+- `notes/StoneWeierstrassC0.tex`
 
 ## Track D. Manifold Differential Forms
 
 Status: geometry-bridge
+Difficulty: intermediate to advanced
 
 Notes:
 
@@ -120,16 +153,17 @@ Lean modules:
 
 Issue decomposition:
 
-1. bundled `0`- and `1`-forms plus notation
-2. bundled smooth `n`-forms
-3. wedge product
-4. pullback
-5. exterior derivative
-6. de Rham complex
+1. `intermediate`: bundled `0`- and `1`-forms plus notation
+2. `intermediate`: bundled smooth `n`-forms
+3. `intermediate`: wedge product
+4. `intermediate`: pullback
+5. `advanced`: exterior derivative
+6. `advanced`: de Rham complex
 
 ## Track E. Projective Geometry
 
 Status: geometry-bridge
+Difficulty: intermediate to advanced
 
 Notes:
 
@@ -146,16 +180,17 @@ Lean modules:
 
 Issue decomposition:
 
-1. collinearity relation
-2. projective lines and incidence
-3. two distinct points determine a unique line
-4. projective-geometry axioms
-5. incidence-preserving maps
-6. projective subspaces
+1. `intermediate`: collinearity relation
+2. `intermediate`: projective lines and incidence
+3. `intermediate`: two distinct points determine a unique line
+4. `advanced`: projective-geometry axioms
+5. `advanced`: incidence-preserving maps
+6. `intermediate`: projective subspaces
 
 ## Track F. Picard on `Spec R`
 
 Status: advanced-algebraic-geometry
+Difficulty: advanced
 
 Scope restriction:
 
@@ -175,10 +210,10 @@ Lean modules:
 
 Issue decomposition:
 
-1. local rank-one criterion via `Module.Invertible`
-2. invertible module to invertible sheaf
-3. locally free constant-rank bridge
-4. Picard identification on `Spec R`
+1. `advanced`: local rank-one criterion via `Module.Invertible`
+2. `advanced`: invertible module to invertible sheaf
+3. `advanced`: locally free constant-rank bridge
+4. `advanced`: Picard identification on `Spec R`
 
 Follow-on note:
 
@@ -188,6 +223,7 @@ Follow-on note:
 ## Track G. Finite-Group Representation Semisimplicity
 
 Status: advanced-representation-theory
+Difficulty: advanced
 
 Notes:
 
@@ -199,8 +235,8 @@ Lean modules:
 
 Issue decomposition:
 
-1. semisimple decomposition into simples
-2. finite direct-sum existence
-3. character decomposition against irreducibles
-4. equivalence to modules over the group algebra
-5. abelianity and finite colimits of `FDRep`
+1. `advanced`: semisimple decomposition into simples
+2. `advanced`: finite direct-sum existence
+3. `advanced`: character decomposition against irreducibles
+4. `advanced`: equivalence to modules over the group algebra
+5. `advanced`: abelianity and finite colimits of `FDRep`

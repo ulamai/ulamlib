@@ -35,6 +35,13 @@ def applyList {n : Type*} (ops : List (RowOp K m)) (A : Matrix m n K) :
     Matrix m n K :=
   ops.foldl (fun B op => op.apply B) A
 
+@[simp] theorem applyList_nil {n : Type*} (A : Matrix m n K) :
+    applyList ([] : List (RowOp K m)) A = A := rfl
+
+@[simp] theorem applyList_cons {n : Type*} (op : RowOp K m) (ops : List (RowOp K m))
+    (A : Matrix m n K) :
+    applyList (op :: ops) A = applyList ops (op.apply A) := rfl
+
 end RowOp
 
 end UlamLib.LinearAlgebra

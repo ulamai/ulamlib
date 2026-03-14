@@ -6,8 +6,19 @@ the repository easier to formalize, assign, review, and reuse.
 ## Before you start
 
 1. read [README.md](README.md) for the repo overview
-2. read [TRACKS.md](TRACKS.md) for the current decomposition
-3. pick an existing issue or open a new one from the track-task template
+2. read [START_HERE.md](START_HERE.md) if this is your first contribution
+3. read [TRACKS.md](TRACKS.md) for the current decomposition
+4. pick an existing issue or open a new one from the track-task template
+
+## Beginner-friendly contribution lanes
+
+If this is your first contribution, prefer one of these:
+
+- note-only cleanup
+- one helper lemma in an existing scaffold
+- one small declaration stub with documentation
+
+Do not start by trying to finish an entire track.
 
 ## Scope
 
@@ -17,6 +28,7 @@ Keep pull requests narrow. A good PR lands one of the following:
 - one Lean submodule scaffold
 - one note rewrite that makes a target easier to formalize
 - one repository-plumbing improvement
+- one or two helper lemmas that make a later proof pass easier
 
 Avoid PRs that mix unrelated tracks.
 
@@ -54,6 +66,17 @@ Lean scaffolds should be useful before they are complete. That means:
 If you are not proving the final theorem yet, land a scaffold that makes the
 next proof pass easier.
 
+## First PR size
+
+For a first contribution, aim for one of:
+
+- one definition
+- one or two small lemmas
+- one note section rewrite
+- one docs improvement
+
+That is a complete contribution. Stop there instead of bundling more.
+
 ## Pull requests
 
 Use the PR template. Reference the issue you are addressing and mention the
@@ -73,3 +96,4 @@ These conventions are intentional:
 - Track B starts in the boundaryless or interior-point setting.
 - Track F uses `Module.Invertible` naming and defers cohomology.
 - The finite-group representation track is first-class, not a footnote.
+- Small first PRs are preferred over large cross-track patches.

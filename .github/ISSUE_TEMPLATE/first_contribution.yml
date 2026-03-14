@@ -1,0 +1,28 @@
+name: First contribution
+description: Propose or claim a very small beginner-friendly task.
+title: "[First contribution] "
+labels:
+  - good first issue
+body:
+  - type: input
+    id: path
+    attributes:
+      label: File path
+      placeholder: UlamLib/Analysis/StoneWeierstrassC0/Defs.lean
+    validations:
+      required: true
+  - type: textarea
+    id: task
+    attributes:
+      label: Small task
+      description: Describe one small contribution, not a whole track.
+      placeholder: Add one helper lemma for monotonicity of a predicate.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why is this a good first task?
+      description: Explain why the task is small and self-contained.
+    validations:
+      required: true

@@ -5,6 +5,14 @@ UlamLib is a public starter library of high-value formalization targets for
 LaTeX notes with matching Lean scaffolds so contributors can clone the repo and
 start formalizing something useful immediately.
 
+This repository has two audiences:
+
+- users who want prepared targets to formalize with UlamAI
+- contributors who want to improve those targets, notes, and scaffolds
+
+If you are new and do not know where to start, read
+[START_HERE.md](START_HERE.md) first.
+
 The focus is not "the biggest famous book." The focus is compact reusable Lean
 packages that fit UlamAI's current strengths:
 
@@ -22,6 +30,7 @@ textbook.
   `ulam formalize`
 - `UlamLib/**/*.lean`: split Lean scaffolds grouped by reusable submodules
 - `TRACKS.md`: the backlog, track decomposition, and milestone structure
+- `START_HERE.md`: the beginner-friendly onboarding path
 - `CONTRIBUTING.md`: contribution rules and repository conventions
 - `notes/TEMPLATE.tex`: a formalization-first template for adding new targets
 
@@ -75,6 +84,10 @@ UlamLib/
 ```
 
 ## Quickstart With UlamAI Prover
+
+This section is for users of the repository. If you want to contribute to the
+repository itself, you do not need to start by running Ulam locally. Begin with
+[START_HERE.md](START_HERE.md) instead.
 
 Install UlamAI:
 
@@ -143,6 +156,22 @@ Notes:
 - start with Track C, then Track A, before moving to geometry or algebraic
   geometry targets
 
+## New Here?
+
+If this is your first formalization-facing contribution, use this path:
+
+1. read [START_HERE.md](START_HERE.md)
+2. choose a small task from [TRACKS.md](TRACKS.md)
+3. change one note or one Lean scaffold
+4. open a small PR
+
+Good first contributions are things like:
+
+- adding one definition to a scaffold
+- adding one or two easy helper lemmas
+- tightening assumptions or labels in a note
+- splitting an oversized theorem cluster into smaller declarations
+
 ## Contributor Plumbing
 
 Before broadening contributor access, this repo now treats repository hygiene as
@@ -180,6 +209,7 @@ short version is:
 1. pick an issue or open one from the track-task template
 2. keep the note blueprint and Lean scaffold aligned
 3. submit small PRs that land one theorem cluster or one file family at a time
+4. prefer beginner-sized changes over heroic all-in-one patches
 
 The full track backlog, priorities, and decomposition now live in
 [TRACKS.md](TRACKS.md).
