@@ -62,6 +62,10 @@ Best files:
 - `UlamLib/LinearAlgebra/RowOp.lean`
 - `UlamLib/ODE/Extendability.lean`
 
+There is also now a tiny completed theorem cluster in
+`UlamLib/Analysis/StoneWeierstrassC0/Real.lean`, so Track C is no longer only a
+placeholder scaffold.
+
 ### Lane 3. First real theorem-cluster work
 
 Good if you already know Lean and want a focused starter target.

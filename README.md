@@ -155,6 +155,8 @@ Notes:
 - `--segment` is the default recommendation for every note in this repo
 - start with Track C, then Track A, before moving to geometry or algebraic
   geometry targets
+- the Track C scaffolds already contain a tiny completed starter theorem cluster
+  in `UlamLib/Analysis/StoneWeierstrassC0/Real.lean`
 
 ## New Here?
 

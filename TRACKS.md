@@ -106,6 +106,11 @@ Why this is the showcase starter:
 - crisp theorem cluster
 - clear future-work signal in mathlib docs
 
+Starter micro-cluster already present:
+
+- predicate-level monotonicity in `Defs.lean`
+- union-preservation starter lemmas in `Real.lean`
+
 Notes:
 
 - `notes/StoneWeierstrassC0.tex`

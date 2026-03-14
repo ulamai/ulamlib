@@ -1,8 +1,6 @@
 name: Track task
 description: Claim or propose a formalization task from TRACKS.md.
 title: "[Track] "
-labels:
-  - track
 body:
   - type: dropdown
     id: track
